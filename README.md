@@ -1,28 +1,22 @@
 # dataprocessR
 
-This package processes plant and ground cover data collected in the field and imports them to the Southeast Utah Group (SEUG) Long-term Vegetation Monitoring Program (LTVMP) database. 
-Plant cover and frequency and ground cover data are collected in the field using paper datasheets, then transcribed into Excel workbooks. 
-This package imports the workbook files into R, restructures the data, then exports them to the database.
-Onset data loggers collect temperature, relative humidity, and precipitation data that are exported to comma delimited files (*.csv) using the HOBOware application from Onset. 
-The [raindancer](https://github.com/scoyoc/raindancer) package is used to import these data into R and summarize them; this package then exports the processed data to the SEUG LTVMP database.
+This package processes plant and ground cover data collected in the field and imports them to the Southeast Utah Group (SEUG) Long-term Vegetation Monitoring Program (LTVMP) database. Plant cover and frequency and ground cover data are collected in the field using paper datasheets, then transcribed into Excel workbooks. This package imports the workbook files into R, restructures the data, then exports them to the database. Onset data loggers collect temperature, relative humidity, and precipitation data that are exported to comma delimited files (\*.csv) using the HOBOware application from Onset. The [raindancer](https://github.com/scoyoc/raindancer) package is used to import these data into R and summarize them; this package then exports the processed data to the SEUG LTVMP database.
 
-Version: 1.0.0
+**Version:** 1.0.0
 
-Depends: R (>= 4.0)
+**Depends:** R (\>= 4.0)
 
-Imports: dplyr, glue, lubridate, raindancer, RODBC, stringr, tibble, tidyr
+**Imports:** dplyr, glue, lubridate, raindancer, RODBC, stringr, tibble, tidyr
 
-Author: Matthew Van Scoyoc
+**Author & Maintainer:** [Matthew Van Scoyoc](https://github.com/scoyoc)
 
-Maintainer: Matthew Van Scoyoc
+**Issues:** <https://github.com/scoyoc/dataprocessR/issues>
 
-Issues: [https://github.com/scoyoc/dataprocessR/issues](https://github.com/scoyoc/dataprocessR/issues)
+**License:** MIT + file [LICENSE](https://github.com/scoyoc/dataprocessR/blob/master/LICENSE.md)
 
-License: MIT + file [LICENSE](https://github.com/scoyoc/dataprocessR/blob/master/LICENSE.md)
+**URL:** <https://github.com/scoyoc/dataprocessR>
 
-URL: [https://github.com/scoyoc/dataprocessR](https://github.com/scoyoc/dataprocessR)
-
-Documentation: [Vignette](https://github.com/scoyoc/dataprocessR/blob/master/doc/dataprocessR_pdf.pdf) and man pages.
+**Documentation:** [Vignette](https://github.com/scoyoc/dataprocessR/blob/master/doc/dataprocessR_pdf.pdf) and man pages.
 
 ## Installation
 
@@ -31,6 +25,7 @@ devtools::install_github("scoyoc/dataprocessR", build_vignettes = TRUE)
 ```
 
 ## Examples
+
 ``` r
 library("dataprocessR")
 
@@ -86,3 +81,12 @@ lapply(veg_files[2:10], function(this_xls){
 RODBC::odbcClose(my_db); rm(my_db)
 ```
 
+## List of Functions
+
+-   `export_hobo_2008`: processes data from Onset HOBO loggers used from 2008-2019.
+
+-   `export_hobo`: processes data from Onset HOBO loggers used from 2020-present.
+
+-   `export_xls`: read Excel workbooks into R and exports the data to the SEUG LTVMP database.
+
+-   `import_xls`: imports SEUG long-term vegetation monitoring data from Microsoft Excel workbooks into R.
